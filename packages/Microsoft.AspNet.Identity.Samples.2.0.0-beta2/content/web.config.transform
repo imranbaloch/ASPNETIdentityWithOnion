@@ -1,0 +1,12 @@
+<configuration>
+  <connectionStrings>
+    <add name="DefaultConnection" connectionString="Data Source=(LocalDb)\v11.0;Initial Catalog=$rootnamespace$-1-14;Integrated Security=SSPI" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <appSettings>
+    <add key="owin:AppStartup" value="IdentitySample.Startup,$rootnamespace$"/>
+    <add key="webpages:Version" value="3.0.0.0" />
+    <add key="webpages:Enabled" value="false" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+  </appSettings>
+</configuration>

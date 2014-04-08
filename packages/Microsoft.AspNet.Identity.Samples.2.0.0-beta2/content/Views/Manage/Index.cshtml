@@ -1,0 +1,53 @@
+@model IdentitySample.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage your account";
+}
+
+<h2>@ViewBag.Title.</h2>
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div class="row">
+    <div class="col-md-8">
+        <p>
+            @if (Model.HasPassword) {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+            else {
+                @Html.ActionLink("Pick a password", "SetPassword")
+            }
+        </p>
+        <p>
+            Phone Number: @(Model.PhoneNumber ?? "None") [
+            @if (Model.PhoneNumber != null) {
+                @Html.ActionLink("Change", "AddPhoneNumber")
+                @: &nbsp;|&nbsp;
+                @Html.ActionLink("Remove", "RemovePhoneNumber")
+            }
+            else {
+                @Html.ActionLink("Add", "AddPhoneNumber")
+            }
+            ]
+        </p>
+        <p>
+            External Logins: @Model.Logins.Count
+            @Html.ActionLink("[Manage]", "ManageLogins")
+        </p>
+        <p>
+            Two Factor Enabled: @(Model.TwoFactor)
+            @if (Model.TwoFactor) {
+                @Html.ActionLink("[Disable]", "DisableTFA")
+            }
+            else {
+                @Html.ActionLink("[Enable]", "EnableTFA")
+            }
+        </p>
+        <p>
+            Two Factor Browser Remembered?: @Model.BrowserRemembered
+            @if (Model.BrowserRemembered) {
+                @Html.ActionLink("[Forget]", "ForgetBrowser")
+            }
+            else {
+                @Html.ActionLink("[Remember]", "RememberBrowser")
+            }
+        </p>
+    </div>
+</div>

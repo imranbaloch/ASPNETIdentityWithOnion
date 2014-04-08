@@ -1,0 +1,31 @@
+﻿@using ASPNETIdentityWithOnion.Core.DomainModels
+@using ASPNETIdentityWithOnion.Core.DomainModels
+@model PaginatedList<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var pageIndex = (int) ViewBag.PageIndex;
+}
+@if (Model.Count > 0)
+{
+    <ul class="pagination">
+        @if (Model.HasPreviousPage)
+        {
+            <li><a href="@Url.Action("Index", "Product", new {pageIndex = pageIndex - 1})">Previous</a></li>
+        }
+        @if (Model.HasNextPage)
+        {
+            <li><a href="@Url.Action("Index", "Product", new { pageIndex = pageIndex + 1 })">Next</a></li>
+        }
+    </ul>
+}
+<div>
+    
+</div>
+    @foreach (var product in Model)
+    {
+        <p style="float:left;margin: 20px;">
+            <img src='@product.Image.Path?s=@Guid.NewGuid()' style='width: 400px; height: 200px; vertical-align: middle' />
+            <span>@product.Name</span>
+        </p>
+    }
