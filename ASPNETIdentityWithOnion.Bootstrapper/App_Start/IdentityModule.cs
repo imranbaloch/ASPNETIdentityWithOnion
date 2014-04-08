@@ -32,10 +32,6 @@ namespace ASPNETIdentityWithOnion.Bootstrapper
             }).InstancePerHttpRequest();
             builder.Register(b => IdentityFactory.CreateRoleManager(b.Resolve<DbContext>())).InstancePerHttpRequest();
             builder.Register(b => HttpContext.Current.GetOwinContext().Authentication).InstancePerHttpRequest();
-
-            //app.CreatePerOwinContext(ApplicationDbContext.Create);
-            //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            //app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
         }
     }
 }
